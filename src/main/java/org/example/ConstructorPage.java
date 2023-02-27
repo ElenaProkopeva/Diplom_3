@@ -11,25 +11,20 @@ public class ConstructorPage {
     //заголовок Соберите бургер
     private By burgerHeader = By.xpath(".//h1[@class='text text_type_main-large mb-5 mt-10' and text()= 'Соберите бургер']");
     //вкладка Булки
- //   private By bunsHeader = By.xpath(".//body/div/div/main/section[1]/div[1]/div[1][@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
-    private By bunsHeader = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[1]/span");
+    private By bunsHeader = By.xpath(".//div[1][@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']");
     //заголовок ассортимента вкладки Булки
-    private By bunsMenu = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()= 'Булки']");
+    private By bunsMenu = By.xpath(".//div[1][@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
     //вкладка Соусы
-    private By sousesHeader = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[2]/span");
+    private By sousesHeader = By.xpath(".//div[2][@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']");
     //заголовок ассортимента вкладки Соусы
-    private By sousesMenu = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()= 'Соусы']");
+    private By sousesMenu = By.xpath(".//div[2][@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
     //вкладка Начинки
-    private By ingredientsHeader = By.xpath("/html/body/div/div/main/section[1]/div[1]/div[3]/span");
+    private By ingredientsHeader = By.xpath(".//div[3][@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']");
     //заголовок ассортимента вкладки Начинки
-    private By ingredientsMenu = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text()= 'Начинки']");
+    private By ingredientsMenu = By.xpath(".//div[3][@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
 
     public ConstructorPage(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public void clickConstructorButton(){
-        driver.findElement(constructorButton).click();
     }
 
     public void clickBunsSection(){

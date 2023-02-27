@@ -1,7 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.example.AuthPage;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,11 +10,6 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 public class LoginFromRegistrationFormTest extends BaseUrlTest{
-
-    @Before
-    public void startUp() {
-        super.before();
-    }
 
     @Test
     @DisplayName("Проверка входа через кнопку в форме регистрации")

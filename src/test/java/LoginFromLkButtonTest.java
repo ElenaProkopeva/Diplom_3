@@ -1,9 +1,7 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.example.AuthPage;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,11 +10,6 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 public class LoginFromLkButtonTest extends BaseUrlTest{
-
-    @Before
-    public void startUp() {
-        super.before();
-    }
 
     @Test
     @DisplayName("Проверка входа по кнопке «Личный кабинет» на главной")
