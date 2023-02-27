@@ -1,7 +1,7 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.example.RegistrationPage;
-import org.junit.Before;
+import org.testng.asserts.SoftAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -12,13 +12,14 @@ import java.time.Duration;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class PasswordRegistrationTest extends BaseUrlTest{
 
     private final static String EMAIL_FIRST_PART = "g";
     private final static String EMAIL_LAST_PART = "elenagromova@yandex.com";
+    SoftAssert softAssert = new SoftAssert();
+
 
     String name;
     String email;
@@ -40,11 +41,6 @@ public class PasswordRegistrationTest extends BaseUrlTest{
         };
     }
 
-    @Before
-    public void startUp() {
-        super.before();
-    }
-
     @Test
     @DisplayName("Проверка пароля при регистрации пользователя")
     @Description("Проверка, что пароль соответствует требованиям: минимальная длина = 6 символов")
@@ -59,8 +55,9 @@ public class PasswordRegistrationTest extends BaseUrlTest{
                 .until(ExpectedConditions.elementToBeClickable(registrationPage.getRegistrationButton()));
         registrationPage.clickRegistrationButton();
 
-        assertEquals("Проверка, что пароль соответствует требованиям, некорректна", isPasswordCorrect, registrationPage.checkPasswordIsCorrect(password));
-        assertNotEquals("Проверка, что отображается сообщение об ошибочном пароле, некорректна", isPasswordCorrect, registrationPage.checkPasswordErrorIsDisplayed());
-        assertNotEquals("Проверка, что отображается текст сообщения об ошибочном пароле, некорректна", isPasswordCorrect, registrationPage.checkPasswordErrorText().equals("Некорректный пароль"));
+        softAssert.assertEquals(isPasswordCorrect, registrationPage.checkPasswordIsCorrect(password), "Проверка, что пароль соответствует требованиям, некорректна");
+        softAssert.assertNotEquals(isPasswordCorrect, registrationPage.checkPasswordErrorIsDisplayed(), "Проверка, что пароль соответствует требованиям, некорректна");
+        softAssert.assertNotEquals(isPasswordCorrect, registrationPage.checkPasswordErrorText().equals("Некорректный пароль"), "Проверка, что отображается текст сообщения об ошибочном пароле, некорректна");
+        softAssert.assertAll();
     }
 }
